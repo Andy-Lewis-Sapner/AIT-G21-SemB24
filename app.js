@@ -109,12 +109,12 @@ window.renderCalculator = renderCalculator
 
 // renderAbout renders the About page for the site.
 const renderAbout = () => {
-    app.innerHTML = '<div class="p-4 h-[200px] flex items-center justify-center">Temp for About</div>'
+    app.innerHTML = '<div class="p-4 h-[200px] flex items-center justify-center dark:text-black">Temp for About</div>'
 }
 
 // renderContact renders the Contact page for the site.
 const renderContact = () => {
-    app.innerHTML = '<div class="p-4 h-[200px] flex items-center justify-center">Temp for Contact</div>'
+    app.innerHTML = '<div class="p-4 h-[200px] flex items-center justify-center dark:text-black">Temp for Contact</div>'
 }
 
 // renderMenu renders the menu buttons for the site.
