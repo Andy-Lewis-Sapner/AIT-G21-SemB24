@@ -11,6 +11,7 @@ const html = document.documentElement
 
 // toggle function toggles the theme of the site.
 const toggle = () => html.classList.toggle('dark')
+window.toggle = toggle
 
 // setView function sets the view of the site based on the clicked button.
 const setView = (v) => {
@@ -25,6 +26,7 @@ const setView = (v) => {
         renderContact()
     }
 }
+window.setView = setView
 
 // toggleMenu function toggles the visibility of the dropdown menu (when used smartphone view).
 const toggleMenu = (hide) => {
@@ -39,6 +41,7 @@ const toggleMenu = (hide) => {
         document.querySelectorAll('svg')[1].classList.add('hidden')
     }
 }
+window.toggleMenu = toggleMenu
 
 // addRow function adds a div to the calculator that contains buttons.
 const addRow = (container, content) => {
@@ -102,6 +105,7 @@ const renderCalculator = () => {
     const buttons = document.querySelectorAll('.d-btn')
     buttons.forEach((el) => el.addEventListener('click', click))
 }
+window.renderCalculator = renderCalculator
 
 // renderAbout renders the About page for the site.
 const renderAbout = () => {
