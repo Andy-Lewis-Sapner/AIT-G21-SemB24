@@ -67,6 +67,7 @@ const menuButton = (text) => {
     return `<button onclick="setView('${text}')">${text}</button>`
 }
 
+// ddMenuButton function returns a div that contains a button that is in the dropdown menu.
 const ddMenuButton = (text) => {
     return `<button class="block py-1 px-2" onclick="setView('${text}')">${text}</button>`
 }
@@ -92,6 +93,37 @@ const click = (event) => {
         monitor.innerText = bac + '=' + eval(bac)
     } else {
         monitor.innerText += a
+    }
+    fitText('monitor')
+}
+
+// fitText function adjusts the font size of the monitor to fit the content.
+// It calculates the font size based on the width of the monitor and the content width.
+// If the content width is smaller than the monitor width, the font size is increased.
+// Otherwise, if the content width is larger than the monitor width, the font size is decreased.
+const fitText = (outputSelector) => {
+    const outputDiv = document.getElementById(outputSelector)
+    const maxFontSize = 36
+    const width = outputDiv.clientWidth
+    const contentWidth = outputDiv.scrollWidth
+    let fontSize = parseInt(window.getComputedStyle(outputDiv).getPropertyValue('font-size'), 10)
+
+    if (contentWidth > width) {
+        fontSize = Math.ceil(fontSize * (width / contentWidth))
+        fontSize = fontSize > maxFontSize ? maxFontSize : fontSize - 1
+        outputDiv.style.fontSize = fontSize + 'px'
+    } else {
+        while (contentWidth === width && fontSize < maxFontSize) {
+            fontSize = Math.ceil(fontSize) + 1
+            fontSize = fontSize > maxFontSize ? maxFontSize : fontSize
+            outputDiv.style.fontSize = fontSize + 'px'
+
+            const newWidth = outputDiv.clientWidth
+            const newContentWidth = outputDiv.scrollWidth
+            if (newContentWidth > newWidth) {
+                outputDiv.style.fontSize = fontSize - 1 + 'px'
+            }
+        }
     }
 }
 
