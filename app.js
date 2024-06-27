@@ -8,6 +8,8 @@ const ddMenu = document.querySelector('#ddMenu')
 const sandwitch = document.querySelectorAll('svg')
 // html const contains the html element (the html file)
 const html = document.documentElement
+// monitorText variable contains the text of the monitor and will save the text that is displayed
+let monitorText = ''
 
 // toggle function toggles the theme of the site.
 const toggle = () => html.classList.toggle('dark')
@@ -82,6 +84,8 @@ const addButtons = (container, nums) => {
 //  the button is 'calculate', it evaluates the expression in the monitor.
 // If the button is 'clear', it clears the monitor.
 // Otherwise, it appends the button's text to the monitor.
+// Also, the text of the monitor is saved in the monitorText variable, so when the calculator
+// is rendered after changing views, the text that was there will be displayed.
 const click = (event) => {
     const monitor = document.getElementById('monitor')
     const bac = monitor.innerText.trim()
@@ -94,6 +98,7 @@ const click = (event) => {
     } else {
         monitor.innerText += a
     }
+    monitorText = monitor.innerText
     fitText('monitor')
 }
 
@@ -132,7 +137,7 @@ const fitText = (outputSelector) => {
 const renderCalculator = () => {
     const labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '+', '-', '*', '/', '**', 'calculate', 'clear']
     app.innerHTML = ''
-    addMonitor(app)
+    addMonitor(app, monitorText)
     addButtons(app, labels)
     const buttons = document.querySelectorAll('.d-btn')
     buttons.forEach((el) => el.addEventListener('click', click))
