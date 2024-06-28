@@ -61,7 +61,7 @@ const addMonitor = (container, text) => {
 // button function returns a div that contains a button.
 const button = (text) => {
     const c = text === 'calculate' ? 'col-span-4' : ''
-    return `<div class='bg-blue-400 hover:bg-blue-600 text-white ${c} py-1 rounded-md text-center text-lg font-bold cursor-pointer d-btn dark:bg-gray-700 dark:text-white'>${text}</div>`
+    return `<div class='bg-blue-400 hover:bg-blue-600 text-white ${c} py-1 rounded-md text-center text-lg font-bold cursor-pointer d-btn dark:bg-gray-700 dark:text-white dark:hover:bg-gray-500'>${text}</div>`
 }
 
 // menuButton function returns a div that contains a button that is in the header menu.
